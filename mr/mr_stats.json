@@ -1,0 +1,6 @@
+{
+  "total_patches": 43265,
+  "after_bgfilter": 39918,
+  "after_dedup": 39918,
+  "reduction_percent": 7.74
+}
