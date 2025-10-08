@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+.env
+
+# IDE
+.vscode/
+.idea/
+
+# Logs & temp
+logs/
+*.log
+
+# FOCUS heavy artifacts
+FOCUS/datasets/
+FOCUS/results/
+FOCUS/checkpoints/
+FOCUS/outputs/
+FOCUS/**/*.h5
+FOCUS/**/*.pt
+FOCUS/**/*.pth
+FOCUS/**/*.zip
+FOCUS/**/*.7z
+FOCUS/**/*.tar
+FOCUS/**/*.tar.gz
