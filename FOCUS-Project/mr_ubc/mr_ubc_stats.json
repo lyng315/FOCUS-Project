@@ -1,0 +1,10 @@
+{
+  "total_patches": 43265,
+  "after_bgfilter": 39918,
+  "after_dedup": 39918,
+  "reduction_percent": 7.74,
+  "job1_time_sec": 20,
+  "job2_time_sec": 22,
+  "job3_time_sec": 25,
+  "total_time_sec": 67
+}

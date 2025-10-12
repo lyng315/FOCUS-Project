@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import sys, json, csv
+import sys, json, csv, re
 from collections import defaultdict
 
 buckets = defaultdict(list)
@@ -22,13 +22,17 @@ for line in sys.stdin:
     label = obj.get("label","")
     tissue = obj.get("tissue_pct", "")
     # try extract coords from patch_id if encoded as ..._x_y
-    parts = patch_id.split("_")
+    #parts = patch_id.split("_")
     x = -1; y = -1
-    if len(parts) >= 3:
-        try:
-            x = int(parts[-2]); y = int(parts[-1])
-        except:
-            x = -1; y = -1
+    #if len(parts) >= 3:
+    #    try:
+    #        x = int(parts[-2]); y = int(parts[-1])
+    #   except:
+    #        x = -1; y = -1
+    m = re.search(r"_(\d+)-(\d+)\.png$", patch_id)
+    if m:
+        x = int(m.group(1))
+        y = int(m.group(2))
     buckets[label_id].append({"x":x,"y":y,"patch_id":patch_id,"path":path,"label":label,"tissue":tissue})
 
 writer = csv.writer(sys.stdout)

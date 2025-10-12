@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import sys, csv, math
+import sys, csv, math, re
 
 THRESH_PIX = 256  # ngưỡng khoảng cách (có thể chỉnh)
 
@@ -20,19 +20,23 @@ for row in reader:
     label = row[3].strip()
     tissue = row[4].strip()
     # extract coordinate from patch_id ending with _x_y
-    parts = patch_id.split("_")
+    #parts = patch_id.split("_")
     x = -1; y = -1
-    if len(parts) >= 3:
-        try:
-            x = int(parts[-2]); y = int(parts[-1])
-        except:
-            x = -1; y = -1
-
+    #if len(parts) >= 3:
+    #    try:
+    #        x = int(parts[-2]); y = int(parts[-1])
+    #    except:
+    #        x = -1; y = -1
+    m = re.search(r"_(\d+)-(\d+)\.png$", patch_id)
+    if m:
+        x = int(m.group(1))
+        y = int(m.group(2))
+        
     keep = True
     if label_id in prev_coord:
         px, py = prev_coord[label_id]
         if px >= 0 and py >= 0 and x >=0 and y >= 0:
-            dist = math.hypot(x-px, y-py)
+            dist = math.hypot((x-px)*512, (y-py)*512)
             if dist < THRESH_PIX:
                 keep = False
     if keep:
