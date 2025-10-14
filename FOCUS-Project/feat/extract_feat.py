@@ -9,8 +9,8 @@ import json
 from tqdm import tqdm
 
 # ---- CONFIG ----
-CSV_PATH = 'mr/manifest_clean.csv'   # input từ người 2
-OUTPUT_PT = "TCGA-01.pt"                  # tensor feature
+CSV_PATH = r'D:\FOCUS-Project\FOCUS-Project\mr_camelyon\manifest_clean.csv'   # input 
+OUTPUT_PT = "TCGA-02.pt"                  # tensor feature
 OUTPUT_INDEX = "feat_index.jsonl"         # mapping patch_id -> index
 
 # ---- LOAD DATA ----
@@ -39,7 +39,7 @@ with torch.no_grad():
     for i, row in tqdm(df.iterrows(), total=len(df)):
         img_path = row['path']
         patch_id = row['patch_id']
-        slide_id = row['label_id']
+        label_id = row['label_id']
         label = row['label']
 
         try:
@@ -51,7 +51,7 @@ with torch.no_grad():
 
             record = {
                 "index": len(features)-1,
-                "slide_id": slide_id,
+                "label_id": label_id,
                 "patch_id": patch_id,
                 "label": label,
                 "path": img_path
