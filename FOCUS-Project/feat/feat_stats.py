@@ -2,7 +2,7 @@ import torch
 import pandas as pd
 import json
 
-FEATURE_PATH = "TCGA-02.pt"
+FEATURE_PATH = "TCGA-03.pt"
 INDEX_PATH = "feat_index.jsonl"
 OUTPUT_STATS = "feat_stats.csv"
 

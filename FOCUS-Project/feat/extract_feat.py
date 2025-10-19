@@ -9,8 +9,8 @@ import json
 from tqdm import tqdm
 
 # ---- CONFIG ----
-CSV_PATH = r'D:\FOCUS-Project\FOCUS-Project\mr_camelyon\manifest_clean.csv'   # input 
-OUTPUT_PT = "TCGA-02.pt"                  # tensor feature
+CSV_PATH = r'D:\FOCUS-Project\FOCUS-Project\mr_tcga\manifest_clean.csv'   # input 
+OUTPUT_PT = "TCGA-03.pt"                  # tensor feature
 OUTPUT_INDEX = "feat_index.jsonl"         # mapping patch_id -> index
 
 # ---- LOAD DATA ----
